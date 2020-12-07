@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { useState } from "react";
 import logo from './logo.svg';
 import './App.css';
@@ -44,14 +46,16 @@ function 좋아요(i) {
   <button>저장</button>
   <div>
 
-  <button onClick= {()=>modal변경(!modal)}>열고닫기</button>
+  <button onClick= { ()=>modal변경(!modal) }>열고닫기</button>
 
  {
 modal === true
   ? <Modal 글제목={글제목} 누른제목={누른제목}></Modal>
   : null
 }
-
+</div>
+);
+}
 
 function Modal(props){
 return (  
