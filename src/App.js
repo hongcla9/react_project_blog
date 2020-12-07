@@ -9,7 +9,7 @@ function App() {
   let [따봉,따봉변경] = useState([0,0,0]);
   let [modal,modal변경] =useState(true);
   let [누른제목,누른제목변경] = useState(0);
-  let [입력값 , 입력값변경] = useState(0);
+  let [입력값 , 입력값변경] = useState('');
 
 function 좋아요(i) {
   var newArray=[...따봉];
@@ -40,9 +40,13 @@ function 좋아요(i) {
  }
 
 <div className="publish">
-  <input />
-  <button>저장</button>
-  <div>
+  <input onChange={(e)=>{입력값변경(e.target.value) }}/>
+  <button onClick={ ()=>{
+    var  arrayCopy = [...글제목];
+    arrayCopy.unshift(입력값);
+    글제목변경(arrayCopy);
+  } }>저장</button>
+</div>
 
   <button onClick= {()=>modal변경(!modal)}>열고닫기</button>
 
@@ -51,17 +55,18 @@ modal === true
   ? <Modal 글제목={글제목} 누른제목={누른제목}></Modal>
   : null
 }
-
+</div>
+);
+}
 
 function Modal(props){
-return (  
-<div className="modal">
+return (
+<div className='modal'>
 <h2>{ props.글제목[props.누른제목] } </h2>
 <p>날짜</p>
 <p>상세내용</p>
 </div>
 )
 }
-
 
 export default App;
